@@ -1,38 +1,52 @@
-.App {
+.titre {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.joueur {
+  float: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Ordinateur1 {
+  float: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Ordinateur2 {
+  float: right;
 }
 
-.App-link {
-  color: #61dafb;
+.result {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  background-color: #ecac35; /* Couleur de fond */
+  border: none; /* Pas de bordure */
+  color: white; /* Couleur du texte */
+  padding: 12px 24px; /* Espacement entre le texte et les bords */
+  text-align: center; /* Centrer le texte */
+  text-decoration: none; /* Pas de soulignement */
+  display: inline-block; /* Le bouton s'affiche en bloc */
+  font-size: 16px; /* Taille de police */
+  border-radius: 8px; /* Coins arrondis */
+  transition: background-color 0.3s ease; /* Transition de la couleur de fond */
 }
+
+button:hover {
+  background-color: #a36b2c; /* Couleur de fond au survol */
+}
+
+h1 {
+  font-size: 2.5em; /* Taille de police */
+  font-weight: bold; /* Graisse de police */
+  text-align: center; /* Alignement du texte */
+  margin-top: 30px; /* Marge en haut */
+  margin-bottom: 20px; /* Marge en bas */
+  color: orange; /* Couleur du texte */
+}
+
+p {
+  color: rgb(188, 128, 15);
+  font-weight: bold;
+}
+
+
