@@ -10,10 +10,10 @@ import { handleClick, handleClickOrdinateur } from './handleClick';
 import React, { useState } from 'react';
 
 function JeuPierreFeuilleCiseau() {
-  const [coupJoueur, setCoupJoueur] = useState(null);
+  const [coupJoueur, setCoupJoueur] = useState(null); 
   const [coupOrdinateur, setCoupOrdinateur] = useState(null);
   const [coupOrdinateur2, setCoupOrdinateur2] = useState(null);
-  const [choixJoueur, setChoixJoueur] = useState(null);
+  const [choixJoueur, setChoixJoueur] = useState(null); // enregistre si le joueur veux jouer par lui-même ou faire jouer un deuxième ordinateur 
   const [resultat, setResultat] = useState(null);
 
   return (
@@ -26,8 +26,12 @@ function JeuPierreFeuilleCiseau() {
         </div>
       <div className='choix'>
         <p> Choisissez votre Joueur</p>
-        <button className='bouton' onClick={() => setChoixJoueur(0)}>Humain </button>
-      <button onClick={() => {setChoixJoueur(1); handleClickOrdinateur(setCoupOrdinateur, setCoupOrdinateur2, setResultat, null, null)}}>Ordinateur</button>
+        <button className='bouton' onClick={() => setChoixJoueur(0)}>
+          Humain 
+          </button>
+      <button onClick={() => {setChoixJoueur(1); handleClickOrdinateur(setCoupOrdinateur, setCoupOrdinateur2, setResultat, null, null)}}>
+        Ordinateur
+        </button>
       </div>
       <div>
         {choixJoueur === 0 ?  <div className='joueur'>

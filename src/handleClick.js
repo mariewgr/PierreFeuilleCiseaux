@@ -1,7 +1,7 @@
 function handleClick(coup, fn, setJoueur, setOrdinateur, setRes) {
     var coupOrdinateur = Math.floor(Math.random() * 3); // 0 = pierre, 1 = feuille, 2 = ciseaux
     if (fn !== null) {
-      coupOrdinateur = fn(); // 0 = pierre, 1 = feuille, 2 = ciseaux
+      coupOrdinateur = fn();
     }
     
     //On met à jour les coups 
@@ -20,7 +20,6 @@ function handleClick(coup, fn, setJoueur, setOrdinateur, setRes) {
       setRes(2); //perdu
     }
   }
-  
 
   function handleClickOrdinateur(setOrdinateur, setOrdinateur2, setRes, fn1, fn2) {
     var coupOrdinateur = Math.floor(Math.random() * 3); // 0 = pierre, 1 = feuille, 2 = ciseaux
