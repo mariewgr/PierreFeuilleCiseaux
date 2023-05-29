@@ -21,7 +21,7 @@ function handleClick(coup, fn, setJoueur, setOrdinateur, setRes) {
     }
   }
   
-  
+
   function handleClickOrdinateur(setOrdinateur, setOrdinateur2, setRes, fn1, fn2) {
     var coupOrdinateur = Math.floor(Math.random() * 3); // 0 = pierre, 1 = feuille, 2 = ciseaux
     var coupOrdinateur2 = Math.floor(Math.random() * 3); // 0 = pierre, 1 = feuille, 2 = ciseaux
