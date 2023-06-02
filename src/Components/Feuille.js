@@ -1,7 +1,5 @@
-const Feuille = () => {
-  return (
-    <img src={'./assets/feuille.png'} className="feuille" alt="feuille" />
-  );
-}
+import feuille from './../assets/feuille.png';
+
+const Feuille = <img src={feuille} className="feuille" alt="feuille" />
 
 export default Feuille;

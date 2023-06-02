@@ -8,9 +8,6 @@ import React, { useState } from 'react';
 import Ciseaux from './Components/Ciseaux';
 import Pierre from './Components/Pierre';
 import Feuille from './Components/Feuille';
-// import ciseaux from './assets/ciseaux.png';
-// import pierre from './assets/pierre.png';
-// import feuille from './assets/feuille.png';
 
 function JeuPierreFeuilleCiseau() {
   const [coupJoueur, setCoupJoueur] = useState(null); 
