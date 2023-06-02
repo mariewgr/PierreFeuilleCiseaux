@@ -1,17 +1,20 @@
 import logo from './assets/logo.png';
-import pierre from './assets/pierre.png';
-import feuille from './assets/feuille.png';
-import ciseaux from './assets/ciseaux.png';
 import gagne from './assets/gagne.png';
 import perdu from './assets/perdu.png';
 import egalite from './assets/egalite.png';
 import './App.css';
-import { handleClick, handleClickOrdinateur } from './handleClick';
+import { JeuJoueur, JeuOrdinateur } from './handleClick';
 import React, { useState } from 'react';
+import Ciseaux from './Components/Ciseaux';
+import Pierre from './Components/Pierre';
+import Feuille from './Components/Feuille';
+// import ciseaux from './assets/ciseaux.png';
+// import pierre from './assets/pierre.png';
+// import feuille from './assets/feuille.png';
 
 function JeuPierreFeuilleCiseau() {
   const [coupJoueur, setCoupJoueur] = useState(null); 
-  const [coupOrdinateur, setCoupOrdinateur] = useState(null);
+  const [coupOrdinateur1, setCoupOrdinateur1] = useState(null);
   const [coupOrdinateur2, setCoupOrdinateur2] = useState(null);
   const [choixJoueur, setChoixJoueur] = useState(null); // enregistre si le joueur veux jouer par lui-même ou faire jouer un deuxième ordinateur 
   const [resultat, setResultat] = useState(null);
@@ -29,37 +32,29 @@ function JeuPierreFeuilleCiseau() {
         <button className='bouton' onClick={() => setChoixJoueur(0)}>
           Humain 
           </button>
-      <button onClick={() => {setChoixJoueur(1); handleClickOrdinateur(setCoupOrdinateur, setCoupOrdinateur2, setResultat, null, null)}}>
+      <button onClick={() => {setChoixJoueur(1); JeuOrdinateur(setCoupOrdinateur1, setCoupOrdinateur2, setResultat, null, null)}}>
         Ordinateur
         </button>
       </div>
       <div>
         {choixJoueur === 0 ?  <div className='joueur'>
-      {coupJoueur !== null && (
         <p>
-        {coupJoueur === 0 ? <img src={pierre} className="pierre" alt="pierre" /> : 
-        coupJoueur === 1 ? <img src={feuille} className="feuille" alt="feuille" /> :
-        <img src={ciseaux} className="ciseaux" alt="ciseaux" />}
+        {coupJoueur}
       </p>
-      )}
       <p>Choisissez votre coup :</p>
-      <button onClick={() => handleClick(0, null, setCoupJoueur, setCoupOrdinateur2, setResultat)}>Pierre </button>
-      <button onClick={() => handleClick(1, null, setCoupJoueur, setCoupOrdinateur2, setResultat)}>Feuille</button>
-      <button onClick={() => handleClick(2, null, setCoupJoueur, setCoupOrdinateur2, setResultat)}>Ciseau</button>
+      <button onClick={() => {JeuJoueur(Pierre, setCoupJoueur, setCoupOrdinateur2, setResultat, null)}}>Pierre </button>
+      <button onClick={() => {JeuJoueur(Feuille, setCoupJoueur, setCoupOrdinateur2, setResultat, null)}}>Feuille</button>
+      <button onClick={() => {JeuJoueur(Ciseaux, setCoupJoueur, setCoupOrdinateur2, setResultat, null)}}>Ciseaux</button>
       </div>
       : <div className='Ordinateur1'>
-      {coupOrdinateur !== null && (
-        <p>{coupOrdinateur === 0 ? <img src={pierre} className="pierre" alt="pierre" /> : 
-        coupOrdinateur === 1 ? <img src={feuille} className="feuille" alt="feuille" /> :
-        <img src={ciseaux} className="ciseaux" alt="ciseaux" />}</p>
-      )}
+      {
+        <p>{coupOrdinateur1}</p>
+      }
       </div>}
       </div>
       <div className='Ordinateur2'>
       {coupOrdinateur2 !== null && (
-        <p>{coupOrdinateur2 === 0 ? <img src={pierre} className="pierre" alt="pierre" /> : 
-        coupOrdinateur2 === 1 ? <img src={feuille} className="feuille" alt="feuille" /> :
-        <img src={ciseaux} className="ciseaux" alt="ciseaux" />}</p>
+        <p>{coupOrdinateur2}</p>
       )}
       </div>
       {resultat !== null && <p className='result'> {resultat === 0 ? <img src={egalite} className="egalite" alt="egalite" /> : 

@@ -1,15 +1,18 @@
 
-import { handleClick, handleClickOrdinateur } from './handleClick.js';
+import Ciseaux from './Components/Ciseaux.js';
+import Feuille from './Components/Feuille.js';
+import Pierre from './Components/Pierre.js';
+import { JeuJoueur, JeuOrdinateur } from './handleClick.js';
 
 describe('Tests pour les fonctions de PierreFeuilleCiseaux', () => {
-  it('La fonction handleClick devrait mettre à jour les valeurs correctement', () => {
+  it('La fonction JeuJoueur devrait mettre à jour les valeurs correctement', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(0, null, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(0, setJoueurMock, setOrdinateurMock, setResMock, null);
 
     // Vérification des résultats
     expect(setJoueurMock).toHaveBeenCalledWith(0);
@@ -18,14 +21,14 @@ describe('Tests pour les fonctions de PierreFeuilleCiseaux', () => {
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour les valeurs correctement', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour les valeurs correctement', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, null, null);
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, null, null);
 
     // Vérification des résultats
     expect(setOrdinateurMock).toHaveBeenCalled();
@@ -33,252 +36,252 @@ describe('Tests pour les fonctions de PierreFeuilleCiseaux', () => {
     expect(setResMock).toHaveBeenCalled();
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Pierre/Ciseaux', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Pierre/Ciseaux', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(0, () => {return 2}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Pierre, setJoueurMock, setOrdinateurMock, setResMock, () => {return Ciseaux});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(1);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Pierre/Feuille', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Pierre/Feuille', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(0, () => {return 1}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Pierre, setJoueurMock, setOrdinateurMock, setResMock, () => {return Feuille});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(2);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Pierre/Pierre', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Pierre/Pierre', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(0, () => {return 0}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Pierre, setJoueurMock, setOrdinateurMock, setResMock, () => {return Pierre});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(0);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Pierre/Ciseaux', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Pierre/Ciseaux', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 0}, () => {return 2});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Pierre}, () => {return Ciseaux});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(1);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Pierre/Feuille', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Pierre/Feuille', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 0}, () => {return 1});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Pierre}, () => {return Feuille});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(2);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Pierre/Pierre', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Pierre/Pierre', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 0}, () => {return 0});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Pierre}, () => {return Pierre});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(0);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Feuille/Ciseaux', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Feuille/Ciseaux', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(1, () => {return 2}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Feuille, setJoueurMock, setOrdinateurMock, setResMock, () => {return Ciseaux});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(2);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Feuille/Feuille', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Feuille/Feuille', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(1, () => {return 1}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Feuille, setJoueurMock, setOrdinateurMock, setResMock, () => {return Feuille});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(0);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Feuille/Pierre', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Feuille/Pierre', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(1, () => {return 0}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Feuille, setJoueurMock, setOrdinateurMock, setResMock, () => {return Pierre});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(1);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Feuille/Ciseaux', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Feuille/Ciseaux', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 1}, () => {return 2});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Feuille}, () => {return Ciseaux});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(2);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Feuille/Feuille', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Feuille/Feuille', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 1}, () => {return 1});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Feuille}, () => {return Feuille});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(0);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Feuille/Pierre', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Feuille/Pierre', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 1}, () => {return 0});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Feuille}, () => {return Pierre});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(1);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Ciseaux/Ciseaux', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Ciseaux', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(2, () => {return 2}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Ciseaux, setJoueurMock, setOrdinateurMock, setResMock, () => {return Ciseaux});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(0);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Ciseaux/Feuille', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Feuille', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(2, () => {return 1}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Ciseaux, setJoueurMock, setOrdinateurMock, setResMock, () => {return Feuille});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(1);
 
   });
 
-  it('La fonction handleClick devrait mettre à jour le résultat correctement pour le coup Ciseaux/Pierre', () => {
+  it('La fonction JeuJoueur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Pierre', () => {
     // Préparation des données
     const setJoueurMock = jest.fn();
     const setOrdinateurMock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClick(2, () => {return 0}, setJoueurMock, setOrdinateurMock, setResMock);
+    JeuJoueur(Ciseaux, setJoueurMock, setOrdinateurMock, setResMock, () => {return Pierre});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(2);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Ciseaux', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Ciseaux', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 2}, () => {return 2});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Ciseaux}, () => {return Ciseaux});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(0);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Feuille', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Feuille', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 2}, () => {return 1});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Ciseaux}, () => {return Feuille});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(1);
 
   });
 
-  it('La fonction handleClickOrdinateur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Pierre', () => {
+  it('La fonction JeuOrdinateur devrait mettre à jour le résultat correctement pour le coup Ciseaux/Pierre', () => {
     // Préparation des données
     const setOrdinateurMock = jest.fn();
     const setOrdinateur2Mock = jest.fn();
     const setResMock = jest.fn();
 
     // Appel de la fonction à tester
-    handleClickOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return 2}, () => {return 0});
+    JeuOrdinateur(setOrdinateurMock, setOrdinateur2Mock, setResMock, () => {return Ciseaux}, () => {return Pierre});
 
     // Vérification des résultats
     expect(setResMock).toHaveBeenCalledWith(2);
