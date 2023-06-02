@@ -7,7 +7,8 @@ const Symbol = [Pierre, Feuille, Ciseaux];
 function resultat(symbol1, symbol2) {
   if (symbol1 === symbol2) {
     return 0; // égalité
-  } else if (
+    
+  } else if ( // cas ou chaque symbole gagne
     (symbol1 === Pierre && symbol2 === Ciseaux) ||
     (symbol1 === Feuille && symbol2 === Pierre) ||
     (symbol1 === Ciseaux && symbol2 === Feuille)
