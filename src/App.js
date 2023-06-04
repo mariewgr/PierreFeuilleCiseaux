@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import TouslesJoueurs from './Components/TouslesJoueurs';
 
 
-function JeuPierreFeuilleCiseau() {
+const JeuPierreFeuilleCiseau = () => {
   const [text, setText] = useState(null);
   const [nbJoueur, setNBJoueur] = useState(0);
 
