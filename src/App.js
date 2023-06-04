@@ -14,7 +14,9 @@ function JeuPierreFeuilleCiseau() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setNBJoueur(text)
+    if (text === '' || !isNaN(text)) {
+      setNBJoueur(text);
+    }
   };
 
   return (
@@ -30,6 +32,7 @@ function JeuPierreFeuilleCiseau() {
             <form onSubmit={handleSubmit}>
             <input type="text" value={text} onChange={handleChange} />
             <button type="submit">Soumettre</button>
+            <p>{isNaN(text) ? 'La valeur saisie n\'est pas un entier' : ''}</p>
       </form>
       <p>{nbJoueur} Joueurs</p>
           </div>
